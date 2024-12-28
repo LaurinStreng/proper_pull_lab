@@ -1,0 +1,9 @@
+---
+clusterName: lab
+endpoint: https://192.168.178.84:6443
+nodes:
+  - hostname: master
+    controlPlane: true
+    ipAddress: 192.168.178.85
+    installDisk: /dev/nvme0n1
+    talosImageURL: ghcr.io/schneid-l/talos-orangepi5:v1.4
