@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  idrac:
+    image: domistyle/idrac6
+
+    ports:
+      - "5801:5800"
+      - "5900:5900"
+    environment:
+      - IDRAC_HOST=192.168.178.132
+      - IDRAC_USER=$USER
+      - IDRAC_PASSWORD=$PASSWORD
+    restart: always

@@ -1,0 +1,49 @@
+# https://github.com/Skaronator/homelab/blob/main/talos/taskfile.yaml
+version: '3'
+
+tasks:
+  init:
+    preconditions:
+      - sh: test -f talsecret.yaml
+        msg: talsecret.yaml is currently missing. Run `task gensecrets` to generate new secrets
+    cmds:
+      - talhelper genconfig --no-gitignore --offline-mode
+  gensecrets:
+    preconditions:
+      - sh: '! test -f talsecret.yaml'
+        msg: talsecret.yaml already exist! Delete file manually if you want to generate new secrets
+    cmds:
+      - talhelper gensecret > talsecret.yaml
+  join:
+    requires:
+      vars: [IP, HOST]
+    cmds:
+      - task: init
+      - test -f clusterconfig/homelab-{{.HOST}}.yaml
+      - talosctl apply --file clusterconfig/homelab-{{.HOST}}.yaml -i -n {{.IP}}
+  bootstrap:
+    prompt: Are you sure to bootstrap the cluster? Running this command more than once breaks your cluster!
+    vars:
+      TALOSCONFIG: "{{.TASKFILE_DIR}}/clusterconfig/talosconfig"
+    cmds:
+      - talosctl bootstrap --nodes master
+      - task: genconfig
+  genconfig:
+    vars:
+      TALOSCONFIG: "{{.TASKFILE_DIR}}/clusterconfig/talosconfig"
+      KUBECONFIG: "{{.TASKFILE_DIR}}/kubeconfig"
+    cmds:
+      - talosctl --talosconfig=./clusterconfig/talosconfig kubeconfig --nodes master .
+      - kubectl get nodes
+  install-tools:
+    vars:
+      KUBECONFIG: "{{.TASKFILE_DIR}}/kubeconfig"
+    cmds:
+      - kubectl --kubeconfig ./kubeconfig  kustomize --enable-helm ../kubernetes/network/_namespace | kubectl --kubeconfig ./kubeconfig apply -f -
+      - kubectl --kubeconfig ./kubeconfig kustomize --enable-helm ../kubernetes/network/cilium | kubectl --kubeconfig ./kubeconfig apply -f -
+      - cilium status -n network --wait
+  k9s:
+    vars:
+      KUBECONFIG: "{{.TASKFILE_DIR}}/kubeconfig"
+    cmds:
+      - k9s --kubeconfig ./kubeconfig

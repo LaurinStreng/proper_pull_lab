@@ -1,3 +1,8 @@
+# talos
 lab-master.yaml
 talosconfig
 talsecret.yaml
+clusterconfig
+# kubernetess
+charts
+kubeconfig
