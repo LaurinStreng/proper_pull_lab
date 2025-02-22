@@ -1,4 +1,3 @@
-# https://github.com/Skaronator/homelab/blob/main/talos/taskfile.yaml
 version: '3'
 
 tasks:
@@ -26,7 +25,7 @@ tasks:
     vars:
       TALOSCONFIG: "{{.TASKFILE_DIR}}/clusterconfig/talosconfig"
     cmds:
-      - talosctl bootstrap --nodes master
+      - talosctl --talosconfig=./clusterconfig/talosconfig bootstrap --nodes master
       - task: genconfig
   genconfig:
     vars:
@@ -34,7 +33,7 @@ tasks:
       KUBECONFIG: "{{.TASKFILE_DIR}}/kubeconfig"
     cmds:
       - talosctl --talosconfig=./clusterconfig/talosconfig kubeconfig --nodes master .
-      - kubectl get nodes
+      - kubectl --kubeconfig ./kubeconfig get nodes
   install-tools:
     vars:
       KUBECONFIG: "{{.TASKFILE_DIR}}/kubeconfig"
@@ -42,6 +41,17 @@ tasks:
       - kubectl --kubeconfig ./kubeconfig  kustomize --enable-helm ../kubernetes/network/_namespace | kubectl --kubeconfig ./kubeconfig apply -f -
       - kubectl --kubeconfig ./kubeconfig kustomize --enable-helm ../kubernetes/network/cilium | kubectl --kubeconfig ./kubeconfig apply -f -
       - cilium status -n network --wait
+  install-gateway-components:
+    vars:
+      KUBECONFIG: "{{.TASKFILE_DIR}}/kubeconfig"
+    cmds:
+      - kubectl --kubeconfig ./kubeconfig apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_gatewayclasses.yaml
+      - kubectl --kubeconfig ./kubeconfig apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_gateways.yaml
+      - kubectl --kubeconfig ./kubeconfig apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_httproutes.yaml
+      - kubectl --kubeconfig ./kubeconfig apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_referencegrants.yaml
+      - kubectl --kubeconfig ./kubeconfig apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_grpcroutes.yaml
+      - kubectl --kubeconfig ./kubeconfig apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
+
   k9s:
     vars:
       KUBECONFIG: "{{.TASKFILE_DIR}}/kubeconfig"

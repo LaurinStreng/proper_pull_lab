@@ -1,0 +1,29 @@
+applicationsets:
+  main:
+    name: main
+    generators:
+    - git:
+        repoURL: https://github.com/LaurinStreng/proper_pull_lab.git
+        revision: main
+        directories:
+        - path: "kubernetes/**/*"
+    template:
+      metadata:
+        name: "{{path[1]}}-{{path.basenameNormalized}}"
+      spec:
+        project: default
+        source:
+          repoURL: https://github.com/LaurinStreng/proper_pull_lab.git
+          targetRevision: main
+          path: "{{path}}"
+          kustomize:
+            namespace: "{{path[1]}}"
+        destination:
+          name: in-cluster
+          namespace: "{{path[1]}}"
+        syncPolicy:
+          automated:
+            selfHeal: true
+            prune: true
+          syncOptions:
+            - FailOnSharedResource=true

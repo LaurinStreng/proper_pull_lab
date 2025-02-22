@@ -2,7 +2,6 @@
 
 `https://github.com/Skaronator/homelab/blob/main/talos/README.md`
 
-
 ## Required Tools
 
 * [talhelper](https://github.com/budimanjojo/talhelper)

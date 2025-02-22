@@ -7,7 +7,7 @@ configs:
 
 global:
   hostAliases:
-  - ip: 192.168.178.101
+  - ip: 192.168.178.100
     hostnames:
     - streng-it.org
 

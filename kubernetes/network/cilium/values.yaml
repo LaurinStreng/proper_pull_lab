@@ -36,3 +36,22 @@ l2announcements:
 k8sClientRateLimit:
   qps: 15
   burst: 30
+
+ingressController:
+  enabled: true
+
+externalIPs:
+  enabled: true
+
+hubble:
+  ui:
+    enabled: true
+  relay:
+    enabled: true
+
+gatewayAPI:
+  enabled: true
+  hostNetwork:
+    enabled: true
+
+l7Proxy: true

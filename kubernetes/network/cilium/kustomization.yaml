@@ -3,6 +3,10 @@ kind: Kustomization
 
 namespace: network
 
+resources:
+  - ./base/ip-base.yaml
+  - ./base/gateway.yaml
+
 helmCharts:
 - repo: https://helm.cilium.io
   name: cilium

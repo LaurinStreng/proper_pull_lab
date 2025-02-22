@@ -1,0 +1,57 @@
+controller:
+  replicaCount: 3
+  priorityClassName: system-cluster-critical
+  service:
+    loadBalancerIP: 192.168.178.100
+  admissionWebhooks:
+    enabled: false
+  extraArgs:
+    default-ssl-certificate: network/wildcard-streng-it.org
+  config:
+    enable-brotli: "true"
+    force-ssl-redirect: "true"
+    log-format-upstream: >
+      host="$host"
+      status=$status
+      x_forward_for="$proxy_add_x_forwarded_for"
+      bytes_sent=$bytes_sent
+      http_referrer="$http_referer"
+      http_user_agent="$http_user_agent"
+      req_id="$req_id"w
+      req_time=$request_time
+      req_method="$request_method"
+      req_proto="$server_protocol"
+      req_path="$uri"
+      req_query="$args"
+      req_length=$request_length
+      upstream_status=$upstream_status
+      upstream_response_time=$upstream_response_time
+      upstream_response_length=$upstream_response_length
+      upstream_addr="$upstream_addr"
+      pstream_namespace="$namespace"
+      upstream_ingress="$ingress_name"
+      upstream_service="$service_name"
+      upstream_port=$service_port
+    proxy-body-size: 16M
+    use-forwaded-headers: "true"
+    use-gzip: "true"
+  # metrics:
+  #   enabled: true
+  #   serviceMonitor:
+  #     enabled: true
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 50m
+      memory: 256Mi
+  topologySpreadConstraints:
+    - labelSelector:
+        matchLabels:
+          app.kubernetes.io/component: controller
+          app.kubernetes.io/instance: '{{ .Release.Name }}'
+          app.kubernetes.io/name: '{{ include "ingress-nginx.name" . }}'
+      maxSkew: 1
+      topologyKey: kubernetes.io/hostname
+      whenUnsatisfiable: ScheduleAnyway
