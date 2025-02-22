@@ -1,0 +1,16 @@
+# Basic `dependabot.yml` file with
+# minimum configuration for two package managers helm and docker
+
+version: 2
+updates:
+  # Helm chart updates
+  - package-ecosystem: "helm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  # Docker updates
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
