@@ -5,6 +5,5 @@ helmCharts:
 - repo: oci://tccr.io/truecharts
   name: blocky
   version: 16.13.6
-  includeCRDs: true
   releaseName: blocky
   valuesFile: values.yaml
