@@ -2,9 +2,22 @@ metrics:
   main:
     enabled: false
 
+blocky:
+  enablePrometheus: false
+
 queryLog:
   type: "" # Log to sdtout
 
 cnpg:
   main:
     enabled: false
+
+configmap:
+  dashboard:
+    enabled: false
+
+  datasource:
+    enabled: false
+
+k8sgateway:
+  enabled: false
