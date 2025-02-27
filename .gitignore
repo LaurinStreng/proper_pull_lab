@@ -6,3 +6,7 @@ clusterconfig
 # kubernetess
 charts
 kubeconfig
+
+#opentofu / terraform
+.terraform
+*tfvars
