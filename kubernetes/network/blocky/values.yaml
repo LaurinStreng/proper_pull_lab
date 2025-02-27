@@ -1,3 +1,6 @@
 metrics:
   main:
     enabled: false
+
+queryLog:
+  type: "" # Log to sdtout
