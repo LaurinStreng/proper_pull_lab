@@ -4,3 +4,7 @@ metrics:
 
 queryLog:
   type: "" # Log to sdtout
+
+cnpg:
+  main:
+    enabled: false
