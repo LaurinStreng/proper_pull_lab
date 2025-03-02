@@ -1,6 +1,7 @@
 ---
 clusterName: homelab
-endpoint: https://192.168.178.135:6443
+endpoint: https://192.168.178.145:6443
+talosVersion: v1.9.2
 clusterPodNets:
   - 10.244.0.0/16
 clusterSvcNets:
@@ -10,18 +11,22 @@ clusterSvcNets:
 cniConfig:
   name: none
 nodes:
-  - hostname: master
+  - hostname: talos-cp-01
     controlPlane: true
+    ipAddress: 192.168.178.145
+    installDisk: /dev/sda
+
+  - hostname: talos-wn-01
     ipAddress: 192.168.178.135
     installDisk: /dev/nvme0n1
-    talosImageURL: ghcr.io/laurinstreng/talos-orangepi-5:v1.9.1 # Cant Update to latest version because of https://github.com/siderolabs/image-factory/issues/200
+    talosImageURL: factory.talos.dev/installer/f2cc7c4f0bba2ba38ac71b9bfc527af63b5b9603158981e13cbf9fbcb637aa89
 
   - hostname: worker-1
     ipAddress: 192.168.178.136
     installDisk: /dev/nvme0n1
-    talosImageURL: ghcr.io/laurinstreng/talos-orangepi-5:v1.9.1 # Cant Update to latest version because of https://github.com/siderolabs/image-factory/issues/200
+    talosImageURL: factory.talos.dev/installer/f2cc7c4f0bba2ba38ac71b9bfc527af63b5b9603158981e13cbf9fbcb637aa89
 
   - hostname: worker-2
     ipAddress: 192.168.178.137
     installDisk: /dev/nvme0n1
-    talosImageURL: ghcr.io/laurinstreng/talos-orangepi-5:v1.9.1 # Cant Update to latest version because of https://github.com/siderolabs/image-factory/issues/200
+    talosImageURL: factory.talos.dev/installer/f2cc7c4f0bba2ba38ac71b9bfc527af63b5b9603158981e13cbf9fbcb637aa89
