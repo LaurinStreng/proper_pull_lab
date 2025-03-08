@@ -21,8 +21,10 @@ configmap:
 
 k8sgateway:
   enabled: true
-  domain:
+  domains:
   - domain: "streng-it.org"
+    dnsChallenge:
+      enabled: false
 
 service:
   dns:
