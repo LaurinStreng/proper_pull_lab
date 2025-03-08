@@ -37,10 +37,10 @@ k8sClientRateLimit:
   qps: 15
   burst: 30
 
-hubble:
-  ui:
-    enabled: true
-  relay:
-    enabled: true
+#hubble:
+#  ui:
+#    enabled: true
+#  relay:
+#    enabled: true
 
 l7Proxy: true
