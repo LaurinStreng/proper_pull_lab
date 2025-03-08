@@ -25,6 +25,7 @@ k8sgateway:
   - domain: "streng-it.org"
     dnsChallenge:
       enabled: false
+  watchedResources: ["Ingress"]
 
 service:
   dns:
