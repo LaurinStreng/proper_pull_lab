@@ -23,3 +23,7 @@ k8sgateway:
   enabled: true
   domain:
     - domain: streng-it.org
+
+global:
+  hostAliases:
+  - ip: 192.168.178.101
