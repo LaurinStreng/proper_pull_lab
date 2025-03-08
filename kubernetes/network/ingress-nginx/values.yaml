@@ -2,7 +2,7 @@ controller:
   replicaCount: 3
   priorityClassName: system-cluster-critical
   service:
-    loadBalancerIP: 192.168.178.100
+    loadBalancerIP: 192.168.178.101
   admissionWebhooks:
     enabled: false
   extraArgs:

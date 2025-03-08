@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - ./base/ip-base.yaml
 
+namespace: network
+
 helmCharts:
 - repo: https://helm.cilium.io
   name: cilium
