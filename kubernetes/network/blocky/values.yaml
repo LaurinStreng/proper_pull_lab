@@ -20,4 +20,6 @@ configmap:
     enabled: false
 
 k8sgateway:
-  enabled: false
+  enabled: true
+  domain:
+    - domain: streng-it.org
