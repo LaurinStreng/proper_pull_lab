@@ -22,8 +22,8 @@ configmap:
 k8sgateway:
   enabled: true
   domain:
-    - domain: streng-it.org
+  - domain: "streng-it.org"
 
 service:
-  blocky-dns:
+  dns:
     loadBalancerIP: 192.168.178.101
