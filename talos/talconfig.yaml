@@ -16,7 +16,7 @@ nodes:
     ipAddress: 192.168.178.145
     installDisk: /dev/sda
 
-  - hostname: talos-wn-01
+  - hostname: talos-cp-02
     ipAddress: 192.168.178.135
     installDisk: /dev/nvme0n1
     talosImageURL: factory.talos.dev/installer/f2cc7c4f0bba2ba38ac71b9bfc527af63b5b9603158981e13cbf9fbcb637aa89
