@@ -32,7 +32,7 @@ tasks:
       TALOSCONFIG: "{{.TASKFILE_DIR}}/clusterconfig/talosconfig"
       KUBECONFIG: "{{.TASKFILE_DIR}}/kubeconfig"
     cmds:
-      - talosctl --talosconfig=./clusterconfig/talosconfig kubeconfig --nodes master .
+      - talosctl --talosconfig=./clusterconfig/talosconfig kubeconfig --nodes talos-cp-01 .
       - kubectl --kubeconfig ./kubeconfig get nodes
   install-tools:
     vars:

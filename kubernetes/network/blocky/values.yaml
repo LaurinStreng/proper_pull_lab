@@ -31,3 +31,29 @@ service:
   dns:
     type: LoadBalancer
     loadBalancerIP: 192.168.178.101
+
+rbac:
+  main:
+    # -- Enables or disables the ClusterRole and ClusterRoleBinding
+    enabled: true
+    primary: true
+    clusterWide: true
+    # -- Set Rules on the ClusterRole
+    rules:
+      - apiGroups:
+          - ""
+        resources:
+          - services
+          - namespaces
+        verbs:
+          - list
+          - watch
+      - apiGroups:
+          - extensions
+          - networking.k8s.io
+        resources:
+          - Ingress
+        verbs:
+          - list
+          - watch
+          - get
