@@ -53,6 +53,7 @@ rbac:
           - networking.k8s.io
         resources:
           - Ingress
+          - ingresses
         verbs:
           - list
           - watch
