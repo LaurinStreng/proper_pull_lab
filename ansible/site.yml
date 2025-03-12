@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+#    - name: Include adguard role
+#      include_role:
+#        name: adguard
+    - name: Install unanted-upgrades
+      include_role:
+        name: unanted_upgrades

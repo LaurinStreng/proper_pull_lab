@@ -1,0 +1,13 @@
+---
+# TODO Add logic to check if AdGuardHome is already installed
+- name: Download AdGuardHome install script
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh"
+    dest: "/tmp/install_adguard.sh"
+    mode: '0755'
+
+- name: Run AdGuardHome install script
+  ansible.builtin.command:
+    cmd: "sh /tmp/install_adguard.sh -v"
+  args:
+    chdir: "/tmp"

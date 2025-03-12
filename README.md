@@ -14,3 +14,8 @@ How to Setup the Server.
 
 Download the Proxmox ISO.
 
+## Thanks for the Inspiration
+
+https://github.com/Skaronator/homelab
+
+https://github.com/mischavandenburg/homelab

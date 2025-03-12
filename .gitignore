@@ -11,3 +11,6 @@ kubeconfig
 .terraform
 *tfvars
 *tfstate*
+
+# ansible
+ansible_deployment_key
