@@ -4,6 +4,6 @@ kind: Kustomization
 helmCharts:
 - repo: oci://tccr.io/truecharts
   name: blocky
-  version: 16.13.6
+  version: 16.13.12
   releaseName: blocky
   valuesFile: values.yaml
