@@ -27,9 +27,6 @@ cgroup:
   autoMount:
     enabled: false
 
-k8sServiceHost: localhost
-k8sServicePort: 7445
-
 l2announcements:
   enabled: true
 
