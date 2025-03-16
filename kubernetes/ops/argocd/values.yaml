@@ -18,4 +18,4 @@ server:
     ingressClassName: nginx
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-    hostname: streng-it.org
+    hostname: argocd.streng-it.org
