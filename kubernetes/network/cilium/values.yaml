@@ -34,10 +34,21 @@ k8sClientRateLimit:
   qps: 15
   burst: 30
 
-#hubble:
-#  ui:
-#    enabled: true
-#  relay:
-#    enabled: true
+hubble:
+  ui:
+    enabled: true
+    tls:
+      certsVolume:
+        projected:
+          sources:
+          - secret:
+              name: wildcard-streng-it.org
+              items:
+              - key: tls.crt
+                path: tls.crt
+              - key: tls.key
+                path: tls.key
+  relay:
+    enabled: true
 
 l7Proxy: true
