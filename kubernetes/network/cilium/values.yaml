@@ -36,6 +36,8 @@ k8sClientRateLimit:
 
 hubble:
   listenAddress: ":4244"
+  peerService:
+    targetPort: 4244
   tls:
     auto:
       enabled: true
