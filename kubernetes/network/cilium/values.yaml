@@ -41,7 +41,7 @@ hubble:
   tls:
     server:
       existingSecret: wildcard-streng-it.org
-      extraDnsNames: hubble.streng-it.org
+      extraDnsNames: ["hubble.streng-it.org"]
     auto:
       enabled: true
       method: certmanager
