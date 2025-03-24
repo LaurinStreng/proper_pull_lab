@@ -8,3 +8,10 @@
     - name: Install unanted-upgrades
       include_role:
         name: unanted_upgrades
+
+- hosts: all
+  become: yes
+  tasks:
+    - name: Setup Network UPS Tools
+      include_role:
+        name: nut

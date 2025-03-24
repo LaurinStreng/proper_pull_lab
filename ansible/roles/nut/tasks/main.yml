@@ -1,0 +1,8 @@
+---
+# Setup Network UPS Tools
+
+- name: install required packages
+  apt:
+    pkg:
+      - nut-cgi
+    state: "present"
