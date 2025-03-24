@@ -43,7 +43,7 @@ hubble:
       certManagerIssuerRef:
         group: cert-manager.io
         kind: ClusterIssuer
-        name: ca-issuer
+        name: letsencrypt
   ui:
     enabled: true
   relay:
