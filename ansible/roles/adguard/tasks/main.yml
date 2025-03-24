@@ -4,7 +4,7 @@
   ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh"
     dest: "/tmp/install_adguard.sh"
-    mode: '0755'
+    mode: "0755"
 
 - name: Run AdGuardHome install script
   ansible.builtin.command:

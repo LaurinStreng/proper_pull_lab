@@ -1,17 +1,24 @@
 ---
-- hosts: all
-  become: yes
+- name: General Setup
+  hosts: all
+  become: true
   tasks:
-#    - name: Include adguard role
-#      include_role:
-#        name: adguard
     - name: Install unanted-upgrades
-      include_role:
+      ansible.builtin.include_role:
         name: unanted_upgrades
 
-- hosts: all
-  become: yes
+# - name: Setup AdGuardHome
+#  hosts: adguard
+#  become: true
+#  tasks:
+    #    - name: Include adguard role
+    #      include_role:
+    #        name: adguard
+
+- name: Setup Pi-UPS
+  hosts: pi-ups
+  become: true
   tasks:
     - name: Setup Network UPS Tools
-      include_role:
+      ansible.builtin.include_role:
         name: nut

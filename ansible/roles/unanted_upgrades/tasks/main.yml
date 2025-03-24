@@ -1,12 +1,13 @@
 ---
 - name: "Install unattended-upgrades"
-  apt:
+  ansible.builtin.apt:
     pkg: "unattended-upgrades"
     state: "present"
 
 - name: "Ensure APT periodic updates are configured"
-  copy:
+  ansible.builtin.copy:
     dest: /etc/apt/apt.conf.d/20auto-upgrades
-    content: |
+    mode: "0644"
+    content: |-
       APT::Periodic::Update-Package-Lists "1";
       APT::Periodic::Unattended-Upgrade "1";

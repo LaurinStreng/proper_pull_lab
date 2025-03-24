@@ -1,8 +1,8 @@
 ---
 # Setup Network UPS Tools
 
-- name: install required packages
-  apt:
+- name: Install required packages
+  ansible.builtin.apt:
     pkg:
       - nut-cgi
     state: "present"
