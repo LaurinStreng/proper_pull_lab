@@ -35,19 +35,17 @@ k8sClientRateLimit:
   burst: 30
 
 hubble:
+  tls:
+    auto:
+      enabled: true
+      method: certmanager
+      certValidityDuration: 1095
+      certManagerIssuerRef:
+        group: cert-manager.io
+        kind: ClusterIssuer
+        name: ca-issuer
   ui:
     enabled: true
-    tls:
-      certsVolume:
-        projected:
-          sources:
-          - secret:
-              name: wildcard-streng-it.org
-              items:
-              - key: tls.crt
-                path: tls.crt
-              - key: tls.key
-                path: tls.key
   relay:
     enabled: true
 
