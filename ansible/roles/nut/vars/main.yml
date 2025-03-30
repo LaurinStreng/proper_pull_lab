@@ -1,0 +1,8 @@
+---
+nut_ups_name: "apc_ups"
+nut_ups_driver: "apcsmart" # To find out which driver is compatible https://networkupstools.org/stable-hcl.html
+nut_ups_port: "/dev/ttyUSB0" # Need to figure out which port is used for the UPS
+nut_ups_description: "APC SMART-UPS 450"
+
+nut_services:
+  - nut-server

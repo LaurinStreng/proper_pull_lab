@@ -4,5 +4,16 @@
 - name: Install required packages
   ansible.builtin.apt:
     pkg:
-      - nut-cgi
+      - nut
+      - nut-client
+      - nut-server
     state: "present"
+
+- name: Install NUT configuration files.
+  ansible.builtin.template:
+    src: "ups.conf.j2"
+    dest: "/etc/nut/ups.conf"
+    owner: root
+    group: nut
+    mode: 0640
+  notify: Restart nut

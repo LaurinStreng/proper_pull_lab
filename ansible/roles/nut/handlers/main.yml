@@ -1,0 +1,6 @@
+---
+- name: Restart nut
+  ansible.builtin.service:
+    name: "{{ item }}"
+    state: restarted
+  with_items: "{{ nut_services }}"
