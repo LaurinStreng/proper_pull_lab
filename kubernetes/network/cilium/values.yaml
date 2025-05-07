@@ -42,17 +42,29 @@ hubble:
     server:
       existingSecret: wildcard-streng-it.org
       extraDnsNames: ["hubble.streng-it.org"]
+    client:
+      existingSecret: wildcard-streng-it.org
     auto:
-      enabled: true
-      method: certmanager
-      certValidityDuration: 1095
-      certManagerIssuerRef:
-        group: cert-manager.io
-        kind: ClusterIssuer
-        name: letsencrypt
+      enabled: false
   ui:
+    tls:
+      client:
+        existingSecret: wildcard-streng-it.org
+      
     enabled: true
   relay:
+    tls:
+      server:
+        enabled: true
+        existingSecret: wildcard-streng-it.org
+      client:
+        existingSecret: wildcard-streng-it.org
     enabled: true
+
+  # metrics:
+  #   tls:
+  #     enabled: true
+  #     server:
+  #       existingSecret: wildcard-streng-it.org
 
 l7Proxy: true
