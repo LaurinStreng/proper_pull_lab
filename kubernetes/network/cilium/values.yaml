@@ -39,26 +39,18 @@ hubble:
   peerService:
     targetPort: 4244
   tls:
-    server:
-      existingSecret: wildcard-streng-it.org
-      extraDnsNames: ["hubble.streng-it.org"]
-    client:
-      existingSecret: wildcard-streng-it.org
     auto:
-      enabled: false
+      enabled: true
+      method: certmanager
+      certValidityDuration: 1095
+      certManagerIssuerRef:
+        group: cert-manager.io
+        kind: ClusterIssuer
+        name: letsencrypt
   ui:
-    tls:
-      client:
-        existingSecret: wildcard-streng-it.org
-      
     enabled: true
+
   relay:
-    tls:
-      server:
-        enabled: true
-        existingSecret: wildcard-streng-it.org
-      client:
-        existingSecret: wildcard-streng-it.org
     enabled: true
 
   # metrics:
