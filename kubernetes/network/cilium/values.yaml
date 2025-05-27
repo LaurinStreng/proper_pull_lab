@@ -53,10 +53,5 @@ hubble:
   relay:
     enabled: true
 
-  # metrics:
-  #   tls:
-  #     enabled: true
-  #     server:
-  #       existingSecret: wildcard-streng-it.org
 
 l7Proxy: true
