@@ -41,21 +41,19 @@ hubble:
   tls:
     auto:
       enabled: true
-      method: certmanager
+      method: helm
       certValidityDuration: 1095
-      certManagerIssuerRef:
-        group: cert-manager.io
-        kind: ClusterIssuer
-        name: letsencrypt
-    server:
-      extraDnsNames: ['*.streng-it.org']
+      # Cannot Use Certmanager Currently because the Common Name in the CertRequest are Static to cilium.io
+      # method: certmanager
+      # certValidityDuration: 1095
+      # certManagerIssuerRef:
+      #   group: cert-manager.io
+      #   kind: ClusterIssuer
+      #   name: letsencrypt
   ui:
     enabled: true
 
   relay:
     enabled: true
-    tls:
-      server:
-        extraDnsNames: ['*.streng-it.org']
 
 l7Proxy: true
