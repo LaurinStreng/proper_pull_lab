@@ -47,11 +47,15 @@ hubble:
         group: cert-manager.io
         kind: ClusterIssuer
         name: letsencrypt
+    server:
+      extraDnsNames: ['*.streng-it.org']
   ui:
     enabled: true
 
   relay:
     enabled: true
-
+    tls:
+      server:
+        extraDnsNames: ['*.streng-it.org']
 
 l7Proxy: true
