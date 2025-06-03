@@ -19,16 +19,19 @@ nodes:
     installDisk: /dev/sda
 
   - hostname: talos-cp-02
+    controlPlane: true
     ipAddress: 192.168.178.135
     installDisk: /dev/nvme0n1
     talosImageURL: factory.talos.dev/installer/f2cc7c4f0bba2ba38ac71b9bfc527af63b5b9603158981e13cbf9fbcb637aa89
 
   - hostname: worker-1
+    controlPlane: true
     ipAddress: 192.168.178.136
     installDisk: /dev/nvme0n1
     talosImageURL: factory.talos.dev/installer/f2cc7c4f0bba2ba38ac71b9bfc527af63b5b9603158981e13cbf9fbcb637aa89
 
   - hostname: worker-2
+    controlPlane: true
     ipAddress: 192.168.178.137
     installDisk: /dev/nvme0n1
     talosImageURL: factory.talos.dev/installer/f2cc7c4f0bba2ba38ac71b9bfc527af63b5b9603158981e13cbf9fbcb637aa89
