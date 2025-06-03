@@ -57,3 +57,32 @@ hubble:
     enabled: true
 
 l7Proxy: true
+
+# to disable the Namespace Creation via the Helm Chart
+secretsNamespace:
+  create: false
+  name: network
+
+ingressController:
+  enabled: false
+  secretsNamespace:
+    create: false
+
+gatewayAPI:
+  enabled: false
+  secretsNamespace:
+    create: false
+
+envoyConfig:
+  enabled: false
+  secretsNamespace:
+    create: false
+
+bgpControlPlane:
+  enabled: false
+  secretsNamespace:
+    create: false
+
+tls:
+  secretsNamespace:
+    create: false

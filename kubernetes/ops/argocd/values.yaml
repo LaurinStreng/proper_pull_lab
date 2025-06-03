@@ -1,16 +1,9 @@
 configs:
   cm:
     kustomize.buildOptions: --enable-helm
-    url: argocd.streng-it.org
+    url: https://argocd.streng-it.org
   params:
     controller.diff.server.side: "true"
-
-global:
-  domain: argocd.streng-it.org
-  hostAliases:
-  - ip: 192.168.178.101
-    hostnames:
-    - streng-it.org
 
 server:
   ingress:
