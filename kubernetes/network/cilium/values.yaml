@@ -1,6 +1,8 @@
 ipam:
   mode: kubernetes
 
+namespaceOverride: network # Needed for the certgen cronjob it uses this value for its namespace
+
 kubeProxyReplacement: true
 
 securityContext:
@@ -38,7 +40,7 @@ hubble:
   tls:
     auto:
       enabled: true
-      method: helm
+      method: cronJob
       certValidityDuration: 1095
       # Cannot Use Certmanager Currently because the Common Name in the CertRequest are Static to cilium.io
       # method: certmanager
