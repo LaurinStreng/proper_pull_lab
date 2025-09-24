@@ -9,7 +9,7 @@ namespace: network
 helmCharts:
 - repo: https://helm.cilium.io
   name: cilium
-  version: 1.18.1
+  version: 1.18.2
   includeCRDs: true
   releaseName: cilium
   valuesFile: values.yaml
