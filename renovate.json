@@ -6,15 +6,22 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["talconfig.yaml$"],
-      "matchStrings": ["talosVersion\\:(!?\\s)(?<currentValue>.*)\\n"],
+      "managerFilePatterns": [
+        "/talconfig.yaml$/"
+      ],
+      "matchStrings": [
+        "talosVersion\\:(!?\\s)(?<currentValue>.*)\\n"
+      ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "siderolabs/talos"
     }
   ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     }
   ]
