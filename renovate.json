@@ -11,5 +11,11 @@
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "siderolabs/talos"
     }
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
   ]
 }
