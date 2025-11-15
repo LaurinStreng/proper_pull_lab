@@ -15,6 +15,7 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
+      "ignoreTests": true, // TODO add some kubeconform test
       "automerge": true
     }
   ]
